@@ -35,8 +35,11 @@ kotlin {
         val commonMain by getting {
             dependencies{
                 implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-                implementation(
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation ("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
             }
         }
         val commonTest by getting {
@@ -45,7 +48,13 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies{
+                implementation("androidx.core:core-ktx:1.5.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+                implementation ("io.ktor:ktor-client-android:$ktorVersion")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
